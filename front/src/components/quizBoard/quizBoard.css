@@ -1,0 +1,21 @@
+
+.quiz-div {
+    display: flex;
+    justify-content: center;
+    border-width: 5px;
+    border-style: solid; 
+    border-color: whitesmoke;
+    border-style: outset;
+    margin-top: 5%;
+}
+
+.q-text {
+    color: black;
+    font-family: Cursive;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.m-spacing {
+    padding: 30px;
+}
