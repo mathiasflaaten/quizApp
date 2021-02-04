@@ -41,7 +41,6 @@ class QuizBoard extends Component {
     }
 
 
-
     incrementCorrectAnswerHandler() {
         this.setState(state => {
             return {numberOfCorrectAns: state.numberOfCorrectAns + 1}
