@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Switch, hashHistory, browserhistory, Route, Lin
 import QuizBoard from './components/quizBoard/quizBoard'; 
 import Menu from './components/menu/menu';
 import GameScore from './components/gameScore/gameScore';
+import AddQuiz from './components/addQuiz/addQuiz';
 
 class App extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class App extends React.Component {
             <Router>
                 <Route exact path='/' component={Menu}/>
                 <Route path='/play' component={QuizBoard}/>
+                <Route path='/create' component={AddQuiz}/>
             </Router>
         ); 
     }    

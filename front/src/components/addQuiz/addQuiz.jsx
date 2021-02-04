@@ -12,9 +12,12 @@ class AddQuiz extends Component {
 
     render() {
         return(
-            <div>
-
-            </div>
+            <form>
+                <label>
+                    Question:
+                    <input type="text" name="question"/>
+                </label>
+            </form>
         )
     }
 }
