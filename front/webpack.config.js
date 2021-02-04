@@ -4,7 +4,8 @@ module.exports = {
     entry: './src/app.jsx',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public')
+        path: path.resolve(__dirname, 'public'),
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -25,6 +26,7 @@ module.exports = {
       extensions: ['.js', '.jsx', '.css'],       
     },
     devServer: {
+        historyApiFallback: true,
         contentBase: './public'
     }
 };

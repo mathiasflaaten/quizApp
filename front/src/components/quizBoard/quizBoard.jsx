@@ -15,29 +15,29 @@ class QuizBoard extends Component {
             numberOfCorrectAns: 0,
             numberOfWrongAns: 0
         }
+
+        this.fetchData = this.fetchData.bind(this); 
     }
 
-    async componentDidMount() {
-        try{
-            let data = await this.getData('https://localhost:44374/api/Quiz');
-            if(data) {
-                this.setState({ 
-                    quizData: data,  
-                });
-            }  
-        } catch(error) {
-            this.setState({ error: error.message }); 
-        }
-       this.updateQuiz();  
+    componentDidMount() {
+      this.startQuiz(); 
     }
 
-    async getData(url) {
+    async fetchData() {
         try {
-          let res = await fetch(url);
-          return await res.json();
+          let res = await fetch('https://localhost:44374/api/Quiz')
+          .then(res => res.json())
+          .then(data => {
+              this.setState({quizData: data});
+          });
         } catch (error) {
             this.setState({ error: error }); 
         }
+    }
+
+    async startQuiz() {
+        await this.fetchData();
+        this.updateQuiz();  
     }
 
 

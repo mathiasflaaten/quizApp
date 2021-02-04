@@ -58,6 +58,25 @@ namespace Quiz.Controllers
             return Ok(quiz);
         }
 
+        [HttpPost]
+        public IActionResult CreateQuiz(QuizItem quiz)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest("Invalid data"); 
+            }
+            _quizes.Add(new QuizItem()
+            {
+                Id = quiz.Id,
+                Question = quiz.Question,
+                Choices = quiz.Choices,
+                Answer = quiz.Answer
+            });
+
+            return Ok(quiz); 
+
+        }
+
         [HttpDelete]
         public IActionResult DeleteQuiz(long id)
         {

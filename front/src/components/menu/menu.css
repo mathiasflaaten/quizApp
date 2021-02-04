@@ -1,0 +1,9 @@
+.welcome-text-div {
+   display: flex;
+   justify-content: center;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+}

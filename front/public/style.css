@@ -3,3 +3,23 @@ body{
     margin: auto;
     width: 80%;
   }
+
+  .content-div {
+    
+    border-width: 5px;
+    border-style: solid; 
+    border-color: whitesmoke;
+    border-style: outset;
+    margin-top: 5%;
+  }
+
+  .m-spacing {
+    padding: 30px;
+}
+
+.text {
+    color: black;
+    font-family: Cursive;
+    font-weight: bold;
+    font-size: x-large;
+}
