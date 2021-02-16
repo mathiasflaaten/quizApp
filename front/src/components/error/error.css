@@ -6,11 +6,10 @@
 }
 
 .error-div {
-    display: flex;
-    justify-content: center;
     border-width: 5px;
     border-style: solid; 
     border-color: red;
     border-style: outset;
     margin-top: 5%;
+    padding: 15px;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChoiceBox from '../choiceBox/choiceBox'; 
 import Error from '../error/error'; 
 import GameScore from '../gameScore/gameScore'; 
+import Loader from '../loader/loader'; 
 import './QuizBoard.css'
 
 class QuizBoard extends Component {
@@ -10,6 +11,7 @@ class QuizBoard extends Component {
         this.state = {
             quizData: [],
             error: null,
+            isLoading: false,
             currentQuiz: null,
             quizLength: this.quizData != null ? quizData.length : 0,
             numberOfCorrectAns: 0,
@@ -25,13 +27,14 @@ class QuizBoard extends Component {
 
     async fetchData() {
         try {
+          this.setState({isLoading: true});  
           let res = await fetch('https://localhost:44374/api/Quiz')
           .then(res => res.json())
           .then(data => {
-              this.setState({quizData: data});
+              this.setState({quizData: data, isLoading: false});
           });
         } catch (error) {
-            this.setState({ error: error }); 
+            this.setState({ error: error,  isLoading: false}); 
         }
     }
 
@@ -92,8 +95,12 @@ class QuizBoard extends Component {
 
 
     displayQuiz() {
+        if(this.state.isLoading) {
+            return(<Loader/>)
+        }
+
         if(this.state.error != null) {
-            return(<Error errorMsg={this.state.error.message}/>); 
+            return(<Error homeLink={true} errorMsg={this.state.error.message}/>); 
         }
 
         if(this.state.currentQuiz == null) {
@@ -124,7 +131,7 @@ class QuizBoard extends Component {
 
     render() {
         return(
-            <div className="main-body">
+            <div className="main-body center">
                 {this.displayQuiz()}
             </div>
         );

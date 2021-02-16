@@ -1,0 +1,20 @@
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.left {
+    margin-right: 90%;
+}
+
+.question-label {
+    width: 60px;
+}
+
+.m-margin-bottom {
+    margin-bottom: 20px;
+}
+
+.form-div {
+    position: absolute;
+}

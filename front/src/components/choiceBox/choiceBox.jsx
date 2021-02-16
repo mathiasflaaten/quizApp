@@ -6,8 +6,21 @@ class ChoiceBox extends Component {
         super(props)
 
         this.state = {
-            
+            choice: null
         }
+
+       // this.onclick = this.onclick.bind(this); 
+       this.handleChange = this.handleChange.bind(this); 
+    }
+
+    handleChange(event) {
+        this.props.onchange(event); 
+        const target = event.target; 
+        console.log("value: ",target.value)
+        
+        this.setState({
+            choice: target.value
+        }, () => console.log("state choice: ", this.state.choice)); 
     }
 
     onclick = (e) => {
@@ -16,9 +29,13 @@ class ChoiceBox extends Component {
 
     render() {
 
+        let styling = this.props.active == this.props.id ? "box correct-box" : "box";
+        let content = this.props.editable == true ? <input className="center input-text input" type="text" name="choice" value={this.state.choice} onChange={this.handleChange}/> : <p className="text">{this.props.choice}</p>;
+        
+
         return(
-            <div id={this.props.id} className="box" onClick={this.props.onclick}>
-                <p className="text">{this.props.choice}</p>
+            <div key={this.props.key} id={this.props.id} editable={this.props.editable} onClick={this.onclick} className={styling} >
+                {content}
             </div>
         );
     }

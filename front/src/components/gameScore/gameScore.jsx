@@ -19,7 +19,7 @@ class GameScore extends Component {
                     <p className="text m-spacing">antall feil: {this.props.wrongAnswers}</p>
                     <div className="button-div">
                         <div className="m-spacing"> <Link to="/"> <PrimaryButton btnText="Meny"/> </Link> </div>
-                        <div className="m-spacing"> <Link to="play"> <PrimaryButton btnText="Spill på nytt"/> </Link> </div>
+                        <div className="m-spacing"> <Link to="play"> <PrimaryButton onclick={() => window.location.reload()} btnText="Spill på nytt"/> </Link> </div>
                     </div>
                 </div>
             </div>
