@@ -13,3 +13,18 @@
     margin-top: 5%;
     padding: 15px;
 }
+
+.l-text {
+    font-size: x-large;
+}
+
+.s-text {
+    font-size: small;
+}
+
+.small-error {
+    width: 200px;
+    height: 50px;
+    border-width: 1px;
+    
+}

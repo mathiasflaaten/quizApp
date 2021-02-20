@@ -4,6 +4,18 @@ body{
     width: 80%;
   }
 
+  :any-link {
+    text-decoration: none;
+  }
+
+  .avoid-pointer {
+    pointer-events: none;
+  }
+
+  .content-body {
+    color: cornsilk;
+  }
+
   .content-div {
     position: relative;
     border-width: 5px;

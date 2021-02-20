@@ -27,8 +27,9 @@ class QuizBoard extends Component {
 
     async fetchData() {
         try {
-          this.setState({isLoading: true});  
+            
           let res = await fetch('https://localhost:44374/api/Quiz')
+          .then(this.setState({isLoading: true}))
           .then(res => res.json())
           .then(data => {
               this.setState({quizData: data, isLoading: false});
@@ -76,7 +77,9 @@ class QuizBoard extends Component {
     }
 
     clickHandler = (e) => {
-        this.checkAnswer(e.target.id); 
+        console.log("clickhandler currentTarget: ", e.currentTarget.id); 
+        console.log("clickhandler Target: ", e.target.id); 
+        this.checkAnswer(e.currentTarget.id); 
         this.updateQuiz();
     }
 
@@ -131,7 +134,7 @@ class QuizBoard extends Component {
 
     render() {
         return(
-            <div className="main-body center">
+            <div className="content-body center">
                 {this.displayQuiz()}
             </div>
         );

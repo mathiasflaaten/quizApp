@@ -9,7 +9,7 @@
 }
 
 .box:hover {
-    box-shadow: 5px 5px  #363434;
+    box-shadow: 5px 5px  purple;
 }
 
 .box > [contenteditable="true"]:active, [contenteditable="true"]:focus

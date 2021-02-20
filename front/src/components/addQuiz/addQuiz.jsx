@@ -93,7 +93,7 @@ class AddQuiz extends Component {
 
     render() {
 
-        const error = this.state.error != null ? <Error errorMsg={this.state.error}/> : null; 
+        const error = this.state.error != null ? <Error size="small" errorMsg={this.state.error}/> : null; 
 
         return(
             <div className="content-div purple-border">

@@ -30,7 +30,7 @@ class ChoiceBox extends Component {
     render() {
 
         let styling = this.props.active == this.props.id ? "box correct-box" : "box";
-        let content = this.props.editable == true ? <input className="center input-text input" type="text" name="choice" value={this.state.choice} onChange={this.handleChange}/> : <p className="text">{this.props.choice}</p>;
+        let content = this.props.editable == true ? <input className="center input-text input" type="text" name="choice" value={this.state.choice} onChange={this.handleChange}/> : <p className="text avoid-pointer">{this.props.choice}</p>;
         
 
         return(
