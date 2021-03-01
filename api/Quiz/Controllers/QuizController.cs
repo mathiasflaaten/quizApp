@@ -72,7 +72,7 @@ namespace Quiz.Controllers
                 Choices = quiz.Choices,
                 Answer = quiz.Answer
             });
-
+            Console.WriteLine(quiz);
             return Ok(quiz); 
 
         }

@@ -38,6 +38,7 @@ class QuizBoard extends Component {
         }
     }
 
+    //prøv å sett then på update quiz for å se om id 1 fortsatt er i quizData.
     async startQuiz() {
         await this.fetchData();
         this.updateQuiz(); 
