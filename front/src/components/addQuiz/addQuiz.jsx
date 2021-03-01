@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom'; 
 import PrimaryButton from '../button/primaryButton';
 import ChoiceBox from '../choiceBox/choiceBox';
-import Error from '../error/error'; 
+import Error from '../alerts/error/error'; 
 import './addQuiz.css'; 
 
 
@@ -23,6 +23,7 @@ class AddQuiz extends Component {
         this.handleChoicesChange = this.handleChoicesChange.bind(this); 
         this.onclick = this.onclick.bind(this); 
         this.handleSubmit = this.handleSubmit.bind(this); 
+        this.setErrorStateToNull = this.setErrorStateToNull.bind(this); 
     }
 
     handleChange(event) {
@@ -52,19 +53,38 @@ class AddQuiz extends Component {
 
     handleSubmit(event) {
         const state = this.state; 
-        if(state.question.length > 0 && state.correctAnswer != 0 && state.choices.length == 4) {
-            const quizItem = {
-                Question: state.question,
-                Choices: state.choices,
-                Answer: state.correctAnswer
+        try {
+            if(state.question.length > 0 && state.correctAnswer != null && state.choices.length == 4) {
+                const quizItem = {
+                    Question: state.question,
+                    Choices: state.choices,
+                    Answer: state.correctAnswer
+                }
+                fetch('https://localhost:44374/api/Quiz', {
+                    method: 'post',
+                    body: JSON.stringify(quizItem), 
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                    
+                }).then(response => {
+                    if(response.status != 200) {
+                        const error = `${response.status} Something went wrong`
+                        this.setState({error: error}, console.log(this.state.error)); 
+                    }
+                    console.log(response)
+                    return response.json(); 
+                })
+                
+            }else {
+                this.setState({
+                    error: 'Form is not filled out correctly'
+                }); 
             }
-        } else {
-            this.setState({
-                error: 'Form is not filled out correctly'
-            }); 
+            console.log(state.choices); 
+        }catch(e) {
+            this.setState({error: e.message}); 
         }
-        console.log(state.choices); 
-       
         event.preventDefault(); 
     }
 
@@ -91,9 +111,14 @@ class AddQuiz extends Component {
         
     }
 
+    setErrorStateToNull() {
+        this.setState({error: null} ,() =>  console.log("error state: ", this.state.error));
+          
+    }
+
     render() {
 
-        const error = this.state.error != null ? <Error size="small" errorMsg={this.state.error}/> : null; 
+        const error = this.state.error != null ? <Error size="small" errorMsg={this.state.error} isCloseButton={true} closeError={this.setErrorStateToNull}/> : null; 
 
         return(
             <div className="content-div purple-border">

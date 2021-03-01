@@ -28,3 +28,12 @@
     border-width: 1px;
     
 }
+
+.exit-box {
+    border-style: outset;
+    border-color: red;
+    background-color: red;
+    color: white;
+    margin-left: 90%;
+    cursor: pointer;
+}

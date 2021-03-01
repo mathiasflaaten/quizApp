@@ -10,17 +10,17 @@ class Error extends Component {
             isCloseButton: false
         }
 
-        this.onclickCloseButton = this.onclickCloseButton.bind(this); 
+        this.onclickCloseBtn = this.onclickCloseBtn.bind(this); 
     }
 
-    onclickCloseButton(e) {
-
+    onclickCloseBtn(e) {
+        this.props.closeError(e);
     }
 
     render() {
 
         const homeLink = this.props.homeLink ? <div className="center"> <Link to="/">Home</Link> </div> : null; 
-        const closeButton = this.props.isCloseButton ? <div onClick={this.onclickCloseButton}>X</div> : null;
+        const closeButton = this.props.isCloseButton ? <div className="exit-box" onClick={this.onclickCloseBtn}>X</div> : null;
         const text = this.props.size == 'small' ? 's-text' : 'l-text'; 
         const errorSize = this.props.size == 'small' ? 'small-error' : null;
 

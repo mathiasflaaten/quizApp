@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChoiceBox from '../choiceBox/choiceBox'; 
-import Error from '../error/error'; 
+import Error from '../alerts/error/error'; 
 import GameScore from '../gameScore/gameScore'; 
 import Loader from '../loader/loader'; 
 import './QuizBoard.css'
@@ -27,7 +27,6 @@ class QuizBoard extends Component {
 
     async fetchData() {
         try {
-            
           let res = await fetch('https://localhost:44374/api/Quiz')
           .then(this.setState({isLoading: true}))
           .then(res => res.json())
@@ -41,7 +40,7 @@ class QuizBoard extends Component {
 
     async startQuiz() {
         await this.fetchData();
-        this.updateQuiz();  
+        this.updateQuiz(); 
     }
 
 
@@ -77,8 +76,6 @@ class QuizBoard extends Component {
     }
 
     clickHandler = (e) => {
-        console.log("clickhandler currentTarget: ", e.currentTarget.id); 
-        console.log("clickhandler Target: ", e.target.id); 
         this.checkAnswer(e.currentTarget.id); 
         this.updateQuiz();
     }
@@ -93,7 +90,6 @@ class QuizBoard extends Component {
                 this.incrementWrongAnswerHandler(); 
              }
         }
-       
     }
 
 
